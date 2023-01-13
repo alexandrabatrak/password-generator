@@ -196,7 +196,7 @@ form label {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2rem;
   margin: 2rem 0 0.5rem;
-  padding: 1rem 1rem 2rem;
+  padding: 1rem 3rem 2rem 1rem;
   border: 1px solid rgb(153, 152, 154);
   resize: none;
   overflow: hidden;
