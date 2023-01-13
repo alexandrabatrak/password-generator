@@ -95,6 +95,7 @@ rangeValueHTML.innerHTML = passwordLength;
 lengthInput.oninput = function () {
   passwordLength = lengthInput.value;
   rangeValueHTML.innerHTML = passwordLength;
+  return passwordLength;
 };
 let lowercaseOption = document.getElementById('lowercaseOption');
 let uppercaseOption = document.getElementById('uppercaseOption');
@@ -108,58 +109,68 @@ let userChoiceArray = [];
 function getPasswordOptions() {
   // create array to loop from
   let options = [
-    lowercaseOption,
-    uppercaseOption,
-    numericOption,
-    specialOption,
+    { optionId: lowercaseOption, charArray: lowerCasedCharacters },
+    { optionId: uppercaseOption, charArray: upperCasedCharacters },
+    { optionId: numericOption, charArray: numericCharacters },
+    { optionId: specialOption, charArray: specialCharacters },
   ];
   options.forEach(function (option) {
-    option.addEventListener('change', function () {
+    // update: I was getting 'on' values in the old array.
+    // method with object referencing DOM checkbox id and pairing it with the array of characters allows to get the correct userChoiceArray
+    let checkbox = option.optionId;
+    checkbox.addEventListener('change', function () {
       // dynamically adjust user input array values
-      if (option.checked) {
-        userChoiceArray.push(option.value);
+      if (checkbox.checked) {
+        userChoiceArray = userChoiceArray.concat(option.charArray);
+        console.log(userChoiceArray);
       } else {
-        userChoiceArray.splice(userChoiceArray.indexOf(option.value), 1);
+        // filter array to only include checked checkboxes corresponding arrays and remove everything that isn't matching that corresponding array characters
+        userChoiceArray = userChoiceArray.filter(
+          (char) => !option.charArray.includes(char)
+        );
+        console.log(userChoiceArray);
       }
     });
   });
+  return userChoiceArray;
 }
-getPasswordOptions();
+// update choice array values
+userChoiceArray = getPasswordOptions();
+console.log(userChoiceArray);
 let passwordStr = '';
 // Function for getting a random element from an array
-function getRandom(userChoiceArray, passwordLength) {
-  // Note: Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method.
-  // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
-  // if (!userChoiceArray.length) {
-  //   return 'Select at least one option';
-  // }
-
+function getRandom() {
+  console.log(userChoiceArray);
+  // reset password for each generate round
   passwordStr = '';
   for (let i = 0; i < passwordLength; i++) {
     let characterIndex = Math.floor(Math.random() * userChoiceArray.length);
     let character = userChoiceArray[characterIndex];
     passwordStr += character;
   }
-  return passwordStr;
 }
 
+// passwordHTML variable to write error messsage
+let passwordHTML = document.getElementById('password');
 // Function to generate password with user input
 function generatePassword() {
-  userChoiceArray = getPasswordOptions();
-  passwordLength = document.getElementById('lengthOption').value;
+  // show error message when no checkboxes selected
+  if (userChoiceArray.length === 0) {
+    passwordHTML.value =
+      'Please, select at least one option to generate a password';
+    return;
+  }
   getRandom(userChoiceArray, passwordLength);
   return passwordStr;
 }
 
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+const generateBtn = document.getElementById('generate');
 
 // Write password to the #password input
 function writePassword() {
   getPasswordOptions();
-  var password = generatePassword();
-  var passwordHTML = document.querySelector('#password');
-
+  let password = generatePassword();
   passwordHTML.value = password;
 }
 
@@ -181,3 +192,7 @@ if (navigator && navigator.clipboard) {
 } else {
   alert('Your browser does not support the Clipboard API');
 }
+
+// NOTES
+// Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method.
+// https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
