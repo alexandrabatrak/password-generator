@@ -5,30 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=open-sans:300|playfair-display:400,400i,700"
+      rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
-        </div>
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-            aria-label="Generated Password"
-          ></textarea>
-        </div>
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+    <main class="container">
+      <div class="wrapper">
+        <header>
+          <h1>Password Generator</h1>
+        </header>
+        <div class="card">
+          <div class="card-body">
+            <h2>Configure password:</h2>
+            <form>
+              <div class="range-container">
+                <label for="lengthOption"
+                  >Length: <span id="rangeValue"></span> characters</label
+                >
+                <input
+                  type="range"
+                  min="10"
+                  max="64"
+                  value="12"
+                  class="range-slider"
+                  id="lengthOption" />
+              </div>
+              <div class="inline-form">
+                <div class="form-group">
+                  <input type="checkbox" id="lowercaseOption" />
+                  <label for="lowercaseOption">Lowercase</label>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="uppercaseOption" />
+                  <label for="uppercaseOption">Uppercase</label>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="numericOption" />
+                  <label for="numericOption">Numeric</label>
+                </div>
+                <div class="form-group">
+                  <input type="checkbox" id="specialOption" />
+                  <label for="specialOption">Special</label>
+                </div>
+              </div>
+            </form>
+            <button id="generate" class="btn">Generate Password</button>
+            <textarea
+              readonly
+              id="password"
+              placeholder="Your Secure Password"
+              aria-label="Generated Password">
+            </textarea>
+          </div>
+          <div class="card-footer"></div>
         </div>
       </div>
-    </div>
+      <div class="bg-wrapper">
+        <div class="bg-image"></div>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
