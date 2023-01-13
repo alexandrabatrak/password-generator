@@ -166,6 +166,7 @@ form label {
   margin-right: 5px;
 }
 
+/* https://stackoverflow.com/questions/68723623/how-to-change-the-background-color-of-the-checkbox-to-black */
 .form-group input:checked + label:before {
   background: black;
 }
@@ -235,6 +236,55 @@ form label {
 button[disabled] {
   cursor: default;
   color: rgba(0, 0, 0, 0.1);
+}
+
+/* copy icon */
+/* https://css.gg/copy */
+.password-textarea {
+  position: relative;
+}
+
+.gg-copy {
+  box-sizing: border-box;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  display: block;
+  width: 14px;
+  height: 18px;
+  border: 2px solid;
+  margin-left: -5px;
+  margin-top: -4px;
+  cursor: pointer;
+}
+
+.gg-copy::after,
+.gg-copy::before {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+}
+
+.gg-copy::before {
+  background: linear-gradient(to left, currentColor 5px, transparent 0)
+      no-repeat right top/5px 2px,
+    linear-gradient(to left, currentColor 5px, transparent 0) no-repeat left
+      bottom/ 2px 5px;
+  box-shadow: inset -4px -4px 0 -2px;
+  bottom: -6px;
+  right: -6px;
+  width: 14px;
+  height: 18px;
+}
+
+.gg-copy::after {
+  width: 6px;
+  height: 2px;
+  background: currentColor;
+  left: 2px;
+  top: 2px;
+  box-shadow: 0 4px 0, 0 8px 0;
 }
 
 @media (min-width: 1200px) {
