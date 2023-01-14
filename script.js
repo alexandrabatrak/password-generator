@@ -88,13 +88,16 @@ var upperCasedCharacters = [
   'Z',
 ];
 
+// get user input options
 let rangeValueHTML = document.getElementById('rangeValue');
 let lengthInput = document.getElementById('lengthOption');
 let passwordLength = lengthInput.value;
 rangeValueHTML.innerHTML = passwordLength;
+// display selected character value
 lengthInput.oninput = function () {
   passwordLength = lengthInput.value;
   rangeValueHTML.innerHTML = passwordLength;
+  // return updated value
   return passwordLength;
 };
 let lowercaseOption = document.getElementById('lowercaseOption');
@@ -103,11 +106,10 @@ let numericOption = document.getElementById('numericOption');
 let specialOption = document.getElementById('specialOption');
 
 // create array to store user input
-// throws error./
 let userChoiceArray = [];
 // Function to get user's password options from input
 function getPasswordOptions() {
-  // create array to loop from
+  // create array of objects for html option ID and corresponding character array
   let options = [
     { optionId: lowercaseOption, charArray: lowerCasedCharacters },
     { optionId: uppercaseOption, charArray: upperCasedCharacters },
@@ -115,53 +117,53 @@ function getPasswordOptions() {
     { optionId: specialOption, charArray: specialCharacters },
   ];
   options.forEach(function (option) {
-    // update: I was getting 'on' values in the old array.
+    // update: I was getting 'on' values in the old array (using just options.value)
     // method with object referencing DOM checkbox id and pairing it with the array of characters allows to get the correct userChoiceArray
     let checkbox = option.optionId;
+    // dynamically adjust user input array values
     checkbox.addEventListener('change', function () {
-      // dynamically adjust user input array values
       if (checkbox.checked) {
         userChoiceArray = userChoiceArray.concat(option.charArray);
-        console.log(userChoiceArray);
       } else {
         // filter array to only include checked checkboxes corresponding arrays and remove everything that isn't matching that corresponding array characters
+
+        // classic function declaration
+        // userChoiceArray = userChoiceArray.filter(function (char) {
+        //   return !option.charArray.includes(char);
+        // });
+
+        // arrow function
         userChoiceArray = userChoiceArray.filter(
           (char) => !option.charArray.includes(char)
         );
-        console.log(userChoiceArray);
       }
     });
   });
+  // return to update the value
   return userChoiceArray;
 }
-// update choice array values
+// - update choice array values - this way it's dynamically updated when user
+// makes changes before password is generated again
 userChoiceArray = getPasswordOptions();
-console.log(userChoiceArray);
-let passwordStr = '';
+// initialise password variable
+let password = '';
 // Function for getting a random element from an array
 function getRandom() {
-  console.log(userChoiceArray);
   // reset password for each generate round
-  passwordStr = '';
+  password = '';
   for (let i = 0; i < passwordLength; i++) {
     let characterIndex = Math.floor(Math.random() * userChoiceArray.length);
     let character = userChoiceArray[characterIndex];
-    passwordStr += character;
+    password += character;
   }
 }
 
-// passwordHTML variable to write error messsage
+// initialise passwordHTML variable to write error messsage
 let passwordHTML = document.getElementById('password');
 // Function to generate password with user input
 function generatePassword() {
-  // show error message when no checkboxes selected
-  if (userChoiceArray.length === 0) {
-    passwordHTML.value =
-      'Please, select at least one option to generate a password';
-    return;
-  }
   getRandom(userChoiceArray, passwordLength);
-  return passwordStr;
+  return password;
 }
 
 // Get references to the #generate element
@@ -170,8 +172,17 @@ const generateBtn = document.getElementById('generate');
 // Write password to the #password input
 function writePassword() {
   getPasswordOptions();
-  let password = generatePassword();
-  passwordHTML.value = password;
+  // show error message when no checkboxes selected
+  if (userChoiceArray.length === 0) {
+    passwordHTML.value =
+      'Please, select at least one option to generate a password';
+    passwordHTML.classList.add('error-message');
+    return;
+  } else {
+    let password = generatePassword();
+    passwordHTML.classList.remove('error-message');
+    passwordHTML.value = password;
+  }
 }
 
 // Add event listener to generate button
@@ -186,6 +197,10 @@ if (navigator && navigator.clipboard) {
   copyButton.addEventListener(
     'click',
     (copyToClipboard = () => {
+      // little animation on icon to give a feedback on a copy
+      copyButton.classList.add('copied');
+      setTimeout(() => copyButton.classList.remove('copied'), 500);
+
       navigator.clipboard.writeText(password.value);
     })
   );
@@ -196,3 +211,4 @@ if (navigator && navigator.clipboard) {
 // NOTES
 // Math.random() does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the window.crypto.getRandomValues() method.
 // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
+// Will not implement it here, as that would not satisfy many challenge criterias - such as using given characters array and user input options.
