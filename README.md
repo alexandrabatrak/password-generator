@@ -19,6 +19,7 @@ Application functionality:
 
 ## Credits
 
+- [Image by Andrew Kliatskyi, Unsplash](https://unsplash.com/photos/L52tyPFiLac)
 - [Bunny Fonts](https://bunnyfonts.com/) - [The Bodoni Moda Project Authors] (https://github.com/indestructible-type)
 - The Fulgent font (Copyright (c) 2021, TSAI,YI-DA, licensed under the [SIL Open Font License](http://scripts.sil.org/OFL), Version 1.1)
 - [Pure CSS 'copy' icon](https://css.gg/copy), modified
