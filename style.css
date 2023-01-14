@@ -13,7 +13,7 @@ body,
 }
 
 body {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Bodoni Moda', serif;
   background: black;
 }
 
@@ -48,21 +48,21 @@ main {
 }
 
 header {
-  padding: 0 0 1.5rem;
+  padding: 0 0 1.5rem 3rem;
   color: rgb(153, 152, 154);
 }
 
 header h1 {
+  font-family: 'Fulgent', serif;
   font-weight: 400;
-  font-size: 1.5rem;
-  letter-spacing: 1rem;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
   text-transform: uppercase;
 }
 
 .card {
   color: rgb(153, 152, 154);
-  border: 1px solid rgb(153, 152, 154);
-  background: rgba(22, 22, 22, 0.59);
+  background: rgba(22, 22, 22, 0.75);
   font-size: 1.25rem;
   max-width: 800px;
   padding: 2rem 3rem 4rem;
@@ -74,22 +74,21 @@ header h1 {
 
 .card-body h2 {
   font-size: 1.5rem;
-  letter-spacing: 5px;
-  font-weight: 400;
+  font-weight: 300;
+  letter-spacing: 2px;
   text-transform: lowercase;
 }
 
 /* FORM */
 form label {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 1px;
   text-transform: lowercase;
-  font-style: italic;
 }
 /* length range */
 .range-container {
   width: 100%;
+  margin: 2rem 0;
 }
 
 .range-slider {
@@ -104,7 +103,8 @@ form label {
   transition: all 0.2s;
 }
 
-.range-slider:hover {
+.range-slider:hover,
+.range-slider:focus {
   opacity: 1;
 }
 
@@ -114,15 +114,20 @@ form label {
   width: 25px;
   height: 25px;
   background: black;
-  border: 2px solid white;
+  border: 1px solid rgba(153, 152, 154, 0.7);
   cursor: pointer;
+}
+
+.range-slider:focus::-webkit-slider-thumb,
+.range-slider:focus::-moz-range-thumb {
+  outline: 1px solid;
 }
 
 .range-slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
   background: black;
-  border: 2px solid white;
+  border: 1px solid rgba(153, 152, 154, 0.4);
   cursor: pointer;
 }
 
@@ -136,6 +141,7 @@ form label {
 .form-group {
   display: block;
   margin-bottom: 15px;
+  position: relative;
 }
 
 .form-group input {
@@ -143,7 +149,9 @@ form label {
   height: initial;
   width: initial;
   margin-bottom: 0;
-  display: none;
+  position: absolute; /* instead of display:none, use absolute to make this keyboard focusable */
+  top: 3px;
+  z-index: -1;
   cursor: pointer;
 }
 
@@ -156,14 +164,18 @@ form label {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background-color: transparent;
-  border: 2px solid rgb(153, 152, 154);
+  background-color: black;
+  border: 1px solid rgba(153, 152, 154, 0.4);
   padding: 12px;
   display: inline-block;
   position: relative;
   vertical-align: middle;
   cursor: pointer;
   margin-right: 5px;
+}
+
+.form-group input:focus + label::before {
+  border-color: rgb(153, 152, 154);
 }
 
 /* https://stackoverflow.com/questions/68723623/how-to-change-the-background-color-of-the-checkbox-to-black */
@@ -175,7 +187,7 @@ form label {
   content: '';
   display: block;
   position: absolute;
-  top: 2px;
+  top: 4px;
   left: 11px;
   width: 6px;
   height: 1.2rem;
@@ -191,25 +203,26 @@ form label {
   appearance: none;
   display: block;
   width: 100%;
-  background: none;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.2rem;
+  background: rgba(153, 152, 154, 0.2);
+  color: rgba(153, 152, 154);
+  font-size: 1.5rem;
+  font-family: 'Bodoni Moda', serif;
   margin: 2rem 0 0.5rem;
   padding: 1rem 3rem 2rem 1rem;
-  border: 1px solid rgb(153, 152, 154);
+  border: 1px solid transparent;
+  opacity: 0.7;
   resize: none;
   overflow: hidden;
 }
 
 #password::placeholder {
-  font-family: 'PlayFair Display', serif;
   text-transform: lowercase;
 }
 
+#password:hover,
 #password:focus,
 #password:focus-visible {
-  border-radius: 0;
+  opacity: 1;
 }
 
 #password.error-message {
@@ -218,15 +231,15 @@ form label {
 }
 
 .btn {
-  border: 1px solid rgb(153, 152, 154);
+  border: 1px solid rgba(153, 152, 154, 0.4);
   background-color: black;
-  color: rgb(153, 152, 154);
+  color: rgb(208, 208, 208);
   display: inline-block;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.25rem;
   line-height: 2rem;
   margin: 2rem 0 1rem;
-  padding: 1rem 2rem;
+  padding: 0.5rem 1.5rem;
+  font-family: 'Bodoni Moda', serif;
+  font-size: 0.9rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 7px;
@@ -257,7 +270,7 @@ button[disabled] {
   display: block;
   width: 14px;
   height: 18px;
-  border: 2px solid;
+  border: 1px solid;
   margin-left: -5px;
   margin-top: -4px;
   cursor: pointer;
@@ -278,10 +291,10 @@ button[disabled] {
 
 .gg-copy:before {
   background: linear-gradient(to left, currentColor 5px, transparent 0)
-      no-repeat right top/5px 2px,
+      no-repeat right top/5px 1px,
     linear-gradient(to left, currentColor 5px, transparent 0) no-repeat left
-      bottom/ 2px 5px;
-  box-shadow: inset -4px -4px 0 -2px;
+      bottom/ 1px 5px;
+  box-shadow: inset -2px -2px 0 -1px;
   bottom: -6px;
   right: -6px;
   width: 14px;
@@ -290,10 +303,10 @@ button[disabled] {
 
 .gg-copy:after {
   width: 6px;
-  height: 2px;
+  height: 1px;
   background: currentColor;
-  left: 2px;
-  top: 2px;
+  left: 2.5px;
+  top: 2.5px;
   box-shadow: 0 4px 0, 0 8px 0;
 }
 
@@ -305,15 +318,52 @@ button[disabled] {
   width: 0;
 }
 
-@media (min-width: 1200px) {
-  .wrapper {
-    margin-left: 15%;
-  }
+footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 0 1rem;
+  color: rgb(153, 152, 154);
 }
 
 @media (max-width: 1199.99px) {
   .wrapper {
     width: 100%;
+  }
+}
+
+@media (min-width: 1366px) {
+  .wrapper {
+    margin-left: 15%;
+  }
+
+  header h1 {
+    position: fixed;
+    font-size: 3.75rem;
+    margin-left: 10vw;
+    margin-top: -5rem;
+    width: 100%;
+  }
+
+  h1:before {
+    background-color: rgba(153, 152, 154, 0.4);
+    content: '';
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+    width: 50%;
+    right: 0.5em;
+    margin-left: -50%;
+  }
+}
+
+@media (min-width: 1920px) {
+  header h1 {
+    font-size: 5rem;
+    margin-left: 18vw;
   }
 }
 

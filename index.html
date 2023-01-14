@@ -7,8 +7,9 @@
     <title>Password Generator</title>
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <link
-      href="https://fonts.bunny.net/css?family=open-sans:300|playfair-display:400,400i,700"
+      href="https://fonts.bunny.net/css?family=bodoni-moda:400"
       rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -19,7 +20,6 @@
         </header>
         <div class="card">
           <div class="card-body">
-            <h2>Configure password:</h2>
             <form>
               <div class="range-container">
                 <label for="lengthOption"
@@ -36,25 +36,34 @@
               <div class="inline-form">
                 <div class="form-group">
                   <input type="checkbox" id="lowercaseOption" />
-                  <label for="lowercaseOption">Lowercase</label>
+                  <label for="lowercaseOption" title="(a,b,c...)"
+                    >Lowercase</label
+                  >
                 </div>
                 <div class="form-group">
                   <input type="checkbox" id="uppercaseOption" />
-                  <label for="uppercaseOption">Uppercase</label>
+                  <label for="uppercaseOption" title="(A,B,C...)"
+                    >Uppercase</label
+                  >
                 </div>
                 <div class="form-group">
                   <input type="checkbox" id="numericOption" />
-                  <label for="numericOption">Numeric</label>
+                  <label for="numericOption" title="(1,2,3...)">Numeric</label>
                 </div>
                 <div class="form-group">
                   <input type="checkbox" id="specialOption" />
-                  <label for="specialOption">Special</label>
+                  <label for="specialOption" title="(%,?,!...)">Special</label>
                 </div>
               </div>
             </form>
-            <button id="generate" class="btn">Generate Password</button>
+            <button id="generate" class="btn">Generate</button>
             <div class="password-textarea">
-              <i class="gg-copy" id="copyButton"></i>
+              <i
+                class="gg-copy"
+                id="copyButton"
+                tabindex="0"
+                role="button"
+                aria-pressed="false"></i>
               <textarea
                 readonly
                 id="password"
@@ -70,6 +79,9 @@
         <div class="bg-image"></div>
       </div>
     </main>
+    <footer>
+      <p>Built with 🎔 & 😱. Alexandra Batrak © 2023</p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
