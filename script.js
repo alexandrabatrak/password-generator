@@ -120,6 +120,9 @@ function getPasswordOptions() {
     // update: I was getting 'on' values in the old array (using just options.value)
     // method with object referencing DOM checkbox id and pairing it with the array of characters allows to get the correct userChoiceArray
     let checkbox = option.optionId;
+    if (checkbox.checked) {
+      userChoiceArray = userChoiceArray.concat(option.charArray);
+    }
     // dynamically adjust user input array values
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
