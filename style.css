@@ -1,3 +1,5 @@
+/* Password Generator CSS */
+
 *,
 *:before,
 *:after {
@@ -178,7 +180,6 @@ form label {
   border-color: rgb(153, 152, 154);
 }
 
-/* https://stackoverflow.com/questions/68723623/how-to-change-the-background-color-of-the-checkbox-to-black */
 .form-group input:checked + label:before {
   background: black;
 }
@@ -257,7 +258,6 @@ button[disabled] {
 }
 
 /* copy icon */
-/* https://css.gg/copy */
 .password-textarea {
   position: relative;
 }

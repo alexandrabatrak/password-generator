@@ -192,7 +192,6 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 // copy password
-// https://www.30secondsofcode.org/articles/s/copy-text-to-clipboard-with-javascript
 if (navigator && navigator.clipboard) {
   let copyButton = document.getElementById('copyButton');
   let password = document.querySelector('#password');
