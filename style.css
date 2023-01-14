@@ -274,6 +274,7 @@ button[disabled] {
   margin-left: -5px;
   margin-top: -4px;
   cursor: pointer;
+  z-index: 1;
 }
 
 .gg-copy:after,
