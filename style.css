@@ -1,6 +1,6 @@
 *,
-*::before,
-*::after {
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -212,6 +212,11 @@ form label {
   border-radius: 0;
 }
 
+#password.error-message {
+  color: rgb(153, 152, 154);
+  font-style: italic;
+}
+
 .btn {
   border: 1px solid rgb(153, 152, 154);
   background-color: black;
@@ -258,15 +263,20 @@ button[disabled] {
   cursor: pointer;
 }
 
-.gg-copy::after,
-.gg-copy::before {
+.gg-copy:after,
+.gg-copy:before {
   content: '';
   display: block;
   box-sizing: border-box;
   position: absolute;
 }
 
-.gg-copy::before {
+.gg-copy:before,
+.gg-copy:after {
+  transition: 0.2s all linear;
+}
+
+.gg-copy:before {
   background: linear-gradient(to left, currentColor 5px, transparent 0)
       no-repeat right top/5px 2px,
     linear-gradient(to left, currentColor 5px, transparent 0) no-repeat left
@@ -278,13 +288,21 @@ button[disabled] {
   height: 18px;
 }
 
-.gg-copy::after {
+.gg-copy:after {
   width: 6px;
   height: 2px;
   background: currentColor;
   left: 2px;
   top: 2px;
   box-shadow: 0 4px 0, 0 8px 0;
+}
+
+.gg-copy.copied:before {
+  width: 0;
+}
+
+.gg-copy.copied:after {
+  width: 0;
 }
 
 @media (min-width: 1200px) {
