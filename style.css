@@ -402,6 +402,10 @@ footer {
     padding: 0;
   }
 
+  #password {
+    padding-bottom: 4rem;
+  }
+
   footer {
     justify-content: center;
   }
