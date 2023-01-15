@@ -13,7 +13,7 @@ Application functionality:
 - [x] Convenient copy function with nice little animation feedback
 - [x] Moody design
 
-###[View Project](https://alexandrabatrak.github.io/password-generator)
+### [View Project](https://alexandrabatrak.github.io/password-generator)
 
 ![Screenshot](/assets/images/screenshot.png)
 
