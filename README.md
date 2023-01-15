@@ -30,4 +30,6 @@ Application functionality:
 
 Licenced under the [MIT](/LICENSE) license.
 
+[![Image of github-profile-views-counter](https://github.com/alexandrabatrak/github-profile-views-counter/blob/master/svg/588312814/badge.svg)](https://github.com/alexandrabatrak/github-profile-views-counter/blob/master/readme/588312814/week.md)
+
 _Copyright © 2023 Alexandra Batrak_
