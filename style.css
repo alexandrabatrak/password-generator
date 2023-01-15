@@ -21,7 +21,6 @@ body {
 
 main {
   display: flex;
-  height: 100vh;
 }
 
 .wrapper {
@@ -320,13 +319,13 @@ button[disabled] {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
   display: flex;
   justify-content: flex-end;
   width: 100%;
   padding: 0 1rem;
   color: rgb(153, 152, 154);
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1199.99px) {
@@ -368,7 +367,21 @@ footer {
   }
 }
 
+@media (min-width: 768px) {
+  main {
+    height: 100vh;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+  }
+}
+
 @media (max-width: 690px) {
+  .card {
+    padding: 1rem;
+  }
   .inline-form {
     flex-direction: column;
   }
@@ -384,8 +397,12 @@ footer {
   }
 }
 
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;
+@media (max-width: 450px) {
+  header {
+    padding: 0;
+  }
+
+  footer {
+    justify-content: center;
   }
 }
