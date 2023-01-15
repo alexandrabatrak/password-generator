@@ -13,13 +13,14 @@ Application functionality:
 - [x] Convenient copy function with nice little animation feedback
 - [x] Moody design
 
-[View Project](https://alexandrabatrak.github.io/password-generator)
+### [View Project](https://alexandrabatrak.github.io/password-generator)
 
 ![Screenshot](/assets/images/screenshot.png)
 
 ## Credits
 
-- [Bunny Fonts](https://bunnyfonts.com/) - [The Bodoni Moda Project Authors] (https://github.com/indestructible-type)
+- [Image by Andrew Kliatskyi, Unsplash](https://unsplash.com/photos/L52tyPFiLac)
+- [Bunny Fonts](https://bunnyfonts.com/) - [The Bodoni Moda Project Authors](https://github.com/indestructible-type)
 - The Fulgent font (Copyright (c) 2021, TSAI,YI-DA, licensed under the [SIL Open Font License](http://scripts.sil.org/OFL), Version 1.1)
 - [Pure CSS 'copy' icon](https://css.gg/copy), modified
 - [Styling HTML checkboxes](https://stackoverflow.com/questions/68723623/how-to-change-the-background-color-of-the-checkbox-to-black)
