@@ -4,7 +4,7 @@ Bootcamp week 03: Intermediate JavaScript: Password Generator 🖤
 
 ## About
 
-Application functionality:
+Application features:
 
 - [x] Generate a password with a click of a button
 - [x] Customise what characters to include
