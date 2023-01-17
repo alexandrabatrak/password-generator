@@ -26,6 +26,7 @@ Application features:
 - [Pure CSS 'copy' icon](https://css.gg/copy), modified
 - [Styling HTML checkboxes](https://stackoverflow.com/questions/68723623/how-to-change-the-background-color-of-the-checkbox-to-black)
 - [Copy to clipboard code snippet](https://www.30secondsofcode.org/articles/s/copy-text-to-clipboard-with-javascript)
+- [Fisher-Yates shuffle algorithm](https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/)
 
 ## License
 

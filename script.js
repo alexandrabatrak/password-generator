@@ -149,7 +149,6 @@ function getPasswordOptions() {
 // makes changes before password is generated again
 userChoiceArray = getPasswordOptions();
 // Fisher-Yates randomisation algorithm
-// https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/
 function fisherYatesRandomize(arr) {
   // Start from the last element and swap
   // one by one. We don't need to run for
