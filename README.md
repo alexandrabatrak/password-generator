@@ -1,6 +1,6 @@
 # Password Generator
 
-Bootcamp week 05: Intermediate JavaScript: Password Generator 🖤
+🖤
 
 ## About
 
